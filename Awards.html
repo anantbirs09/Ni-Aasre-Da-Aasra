@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awards & Recognitions | Ni Aasre Da Aasra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --orange: #e75b2c;
+      --gold: #f6a623;
+      --brown: #6f432f;
+      --ink: #1f2933;
+      --muted: #667085;
+      --paper: #fffaf4;
+      --white: #ffffff;
+      --line: #ead9cb;
+      --shadow: 0 18px 50px rgba(58, 31, 10, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "DM Sans", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(246, 166, 35, 0.13), transparent 34%),
+        linear-gradient(180deg, #fffaf4 0%, #ffffff 34%, #fff7ef 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1140px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      background: var(--white);
+      position: relative;
+      z-index: 30;
+      box-shadow: 0 1px 0 var(--line);
+    }
+
+    .main-nav {
+      height: 86px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      color: var(--brown);
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--brown);
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-dropdown button:hover {
+      color: var(--orange);
+    }
+
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-dropdown button {
+      border: 0;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: transparent;
+      color: var(--brown);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 16px);
+      left: 0;
+      width: 250px;
+      max-height: 430px;
+      overflow: auto;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: 0.18s ease;
+      z-index: 20;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 6px;
+      color: var(--brown);
+    }
+
+    .nav-dropdown-menu a:hover {
+      background: #fff3e8;
+    }
+
+    .nav-donate,
+    .btn.primary {
+      background: linear-gradient(135deg, var(--orange), var(--gold));
+      color: var(--white);
+      box-shadow: 0 10px 24px rgba(231, 91, 44, 0.25);
+    }
+
+    .nav-donate {
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: box-shadow 0.28s ease, filter 0.28s ease, transform 0.28s ease;
+    }
+
+    .nav-donate:hover,
+    .nav-donate:focus-visible {
+      box-shadow: 0 16px 30px rgba(231, 91, 44, 0.34);
+      filter: saturate(1.08);
+      transform: translateY(-2px);
+    }
+
+    .nav-toggle {
+      display: none;
+      margin-left: auto;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--brown);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 800;
+    }
+
+    .awards-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 92px 0 78px;
+      background:
+        linear-gradient(135deg, rgba(111, 67, 47, 0.9), rgba(231, 91, 44, 0.78)),
+        url("assets/about-bg.jpg") center / cover;
+      color: var(--white);
+    }
+
+    .awards-hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 96px;
+      background: linear-gradient(0deg, #fffaf4, rgba(255, 250, 244, 0));
+    }
+
+    .awards-hero-layout {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 290px;
+      gap: 52px;
+      align-items: center;
+    }
+
+    .awards-hero-copy {
+      max-width: 760px;
+    }
+
+    .awards-hero h1 {
+      margin: 12px 0 18px;
+      max-width: 760px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(44px, 6vw, 76px);
+      line-height: 0.98;
+    }
+
+    .awards-hero p {
+      max-width: 700px;
+      color: #fff3e8;
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .awards-hero .eyebrow {
+      color: #ffd39b;
+    }
+
+    .awards-hero-card {
+      min-height: 280px;
+      padding: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.14);
+      box-shadow: 0 24px 60px rgba(35, 20, 12, 0.28);
+      backdrop-filter: blur(12px);
+    }
+
+    .awards-hero-card i {
+      color: #ffd39b;
+      font-size: 42px;
+    }
+
+    .awards-hero-card strong {
+      display: block;
+      margin-top: 30px;
+      font-size: 78px;
+      line-height: 1;
+    }
+
+    .awards-hero-card span {
+      display: block;
+      margin-top: 12px;
+      color: #fff3e8;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .awards-intro {
+      padding: 74px 0 34px;
+    }
+
+    .awards-intro-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1fr;
+      gap: 56px;
+      align-items: end;
+    }
+
+    .awards-intro h2,
+    .awards-closing-panel h2 {
+      margin: 8px 0 0;
+      color: var(--brown);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(32px, 4vw, 50px);
+      line-height: 1.08;
+    }
+
+    .awards-intro p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .awards-gallery {
+      padding: 34px 0 84px;
+    }
+
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .award-card {
+      position: relative;
+      min-height: 100%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: 0 12px 30px rgba(58, 31, 10, 0.08);
+      transition: border-color 0.28s ease, box-shadow 0.28s ease, transform 0.28s ease;
+    }
+
+    .award-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.32s ease;
+    }
+
+    .award-card:hover,
+    .award-card:focus-within {
+      border-color: rgba(231, 91, 44, 0.36);
+      box-shadow: 0 24px 54px rgba(111, 67, 47, 0.18);
+      transform: translateY(-8px);
+    }
+
+    .award-card:hover::before,
+    .award-card:focus-within::before {
+      transform: scaleX(1);
+    }
+
+    .award-media {
+      height: 320px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      padding: 24px;
+      background:
+        linear-gradient(135deg, rgba(255, 243, 232, 0.92), rgba(255, 255, 255, 0.72)),
+        radial-gradient(circle at center, rgba(246, 166, 35, 0.18), transparent 46%);
+    }
+
+    .award-media img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      object-position: center;
+      filter: drop-shadow(0 16px 22px rgba(58, 31, 10, 0.18));
+      transition: filter 0.3s ease, transform 0.34s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .award-card-portrait .award-media img {
+      max-height: 100%;
+      max-width: 86%;
+    }
+
+    .award-card-landscape .award-media img {
+      max-width: 100%;
+      max-height: 86%;
+    }
+
+    .award-card:hover .award-media img,
+    .award-card:focus-within .award-media img {
+      filter: drop-shadow(0 22px 26px rgba(58, 31, 10, 0.24));
+      transform: scale(1.035);
+    }
+
+    .award-content {
+      padding: 24px;
+    }
+
+    .award-year {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: #fff3e8;
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .award-card h2 {
+      margin: 14px 0 10px;
+      color: var(--brown);
+      font-size: 24px;
+      line-height: 1.18;
+    }
+
+    .award-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.68;
+    }
+
+    .featured-award {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 0.9fr 1fr;
+      align-items: stretch;
+    }
+
+    .featured-award .award-media {
+      height: 100%;
+      min-height: 390px;
+      padding: 30px;
+    }
+
+    .featured-award.award-card-portrait .award-media img {
+      max-width: 78%;
+      max-height: 96%;
+    }
+
+    .featured-award .award-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 38px;
+    }
+
+    .featured-award h2 {
+      font-size: clamp(32px, 4vw, 48px);
+    }
+
+    .awards-closing {
+      padding: 0 0 86px;
+    }
+
+    .awards-closing-panel {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: center;
+      padding: 34px;
+      border-radius: 8px;
+      background: #fff3e8;
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 44px rgba(58, 31, 10, 0.09);
+    }
+
+    .awards-closing-panel > i {
+      width: 72px;
+      height: 72px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange), var(--gold));
+      color: var(--white);
+      font-size: 30px;
+    }
+
+    .awards-closing-panel p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .site-footer {
+      padding: 58px 0 24px;
+      background: #2b211c;
+      color: var(--white);
+    }
+
+    .footer-layout {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr 1fr 1.2fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .site-footer h2,
+    .site-footer h3 {
+      color: #ffd39b;
+      margin-top: 0;
+    }
+
+    .site-footer p {
+      color: #d9c8ba;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .site-footer a {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .footer-social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .footer-social-links a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffd39b;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .footer-social-links a:hover,
+    .footer-social-links a:focus-visible {
+      background: #ffd39b;
+      color: #2b211c;
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      margin-top: 36px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-bottom p {
+      margin: 0;
+    }
+
+    .reveal-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: var(--scroll-delay, 0ms);
+    }
+
+    .reveal-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 960px) {
+      .nav-toggle {
+        display: grid;
+        place-items: center;
+      }
+
+      .nav-links,
+      .nav-donate {
+        display: none;
+      }
+
+      .main-nav.menu-open .nav-links {
+        display: grid;
+        position: absolute;
+        top: 86px;
+        left: 16px;
+        right: 16px;
+        z-index: 5;
+        padding: 18px;
+        border-radius: 8px;
+        background: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .main-nav.menu-open .nav-dropdown-menu {
+        position: static;
+        width: 100%;
+        max-height: none;
+        margin-top: 10px;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+      }
+
+      .awards-hero-layout,
+      .awards-intro-grid,
+      .awards-closing-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .awards-hero-card {
+        min-height: auto;
+      }
+
+      .awards-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .featured-award {
+        grid-column: span 2;
+        grid-template-columns: 1fr;
+      }
+
+      .featured-award .award-media {
+        min-height: 340px;
+      }
+
+      .awards-closing-panel .btn {
+        width: fit-content;
+      }
+
+      .footer-layout {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .brand span {
+        max-width: 170px;
+      }
+
+      .awards-hero {
+        padding: 72px 0 56px;
+      }
+
+      .awards-hero h1 {
+        font-size: clamp(38px, 11vw, 56px);
+      }
+
+      .awards-intro {
+        padding-top: 56px;
+      }
+
+      .awards-grid,
+      .featured-award,
+      .footer-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-award {
+        grid-column: auto;
+      }
+
+      .award-media,
+      .featured-award .award-media {
+        height: 320px;
+        min-height: 320px;
+        padding: 18px;
+      }
+
+      .award-card-portrait .award-media img,
+      .featured-award.award-card-portrait .award-media img {
+        max-width: 82%;
+      }
+
+      .award-card-landscape .award-media img {
+        max-width: 100%;
+        max-height: 88%;
+      }
+
+      .awards-closing-panel {
+        padding: 26px;
+      }
+
+      .awards-closing-panel .btn {
+        width: 100%;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="main-nav container" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Ni Aasre Da Aasra home">
+        <img src="assets/logo.png" alt="">
+        <span>Ni Aasre Da Aasra</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+          <button type="button">About <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="nav-dropdown-menu">
+            <a href="pages/about-us.html">About Us</a>
+            <a href="Awards.html">Awards</a>
+            <a href="pages/about-us.html#vision">Vision & Mission</a>
+            <a href="pages/about-us.html#founders">Our Founders</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <button type="button">Our Programs <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="nav-dropdown-menu">
+            <a href="pages/women-abuse.html">Women Safety</a>
+            <a href="pages/child-education.html">Child Education</a>
+            <a href="pages/elder-support.html">Elder Support</a>
+            <a href="pages/differently-abled.html">Differently Abled</a>
+            <a href="pages/donate-meal.html">Meals of Hope</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <button type="button">Ways to Give <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="nav-dropdown-menu">
+            <a href="pages/donate.html">Donate</a>
+            <a href="pages/donate-monthly.html">Donate Monthly</a>
+            <a href="pages/donate-meal.html">Donate a Meal</a>
+            <a href="pages/csr-projects.html">CSR Projects</a>
+            <a href="pages/campaign.html">Campaign</a>
+            <a href="pages/volunteer.html">Volunteer / Work With Us</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <button type="button">Our Impact <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="nav-dropdown-menu">
+            <a href="index.html#impact">Impact Numbers</a>
+            <a href="pages/csr-projects.html">CSR Projects</a>
+            <a href="pages/campaign.html">Campaigns</a>
+            <a href="pages/sitemap.html">Sitemap</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <button type="button">Reach Us <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="nav-dropdown-menu">
+            <a href="pages/contact.html">Contact</a>
+            <a href="pages/privacy-policy.html">Privacy Policy</a>
+            <a href="pages/terms-of-use.html">Terms of Use</a>
+          </div>
+        </div>
+      </div>
+      <a class="nav-donate" href="pages/donate.html">Donate Now</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="awards-hero">
+      <div class="container awards-hero-layout">
+        <div class="awards-hero-copy reveal-scroll">
+          <span class="eyebrow">Awards & Recognitions</span>
+          <h1>Honours that reflect trust, service, and compassion in action.</h1>
+          <p>Every recognition is a reminder of the community that stands with Ni Aasre Da Aasra: local service clubs, spiritual organizations, media platforms, and social bodies that have acknowledged the shelter's care for people who need it most.</p>
+        </div>
+        <div class="awards-hero-card reveal-scroll">
+          <i class="fa-solid fa-award"></i>
+          <strong>10</strong>
+          <span>recognitions displayed from the shelter's award collection</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="awards-intro">
+      <div class="container awards-intro-grid">
+        <div class="reveal-scroll">
+          <span class="eyebrow">Recognition Gallery</span>
+          <h2>Celebrating the hands that serve quietly every day.</h2>
+        </div>
+        <p class="reveal-scroll">The awards below honour humanitarian service, social commitment, public awareness, spiritual values, and practical support for shelter residents. Together, they tell the story of a home built through compassion and community faith.</p>
+      </div>
+    </section>
+
+    <section class="awards-gallery" aria-label="Awards and recognitions gallery">
+      <div class="container awards-grid">
+        <article class="award-card award-card-portrait reveal-scroll featured-award">
+          <div class="award-media">
+            <img src="Edit/WhatsApp Image 2026-05-23 at 12.56.52.png" alt="YouTube Silver Creator Award presented to Ni Aasre Da Aasra">
+          </div>
+          <div class="award-content">
+            <span class="award-year">Digital Reach</span>
+            <h2>YouTube Silver Creator Award</h2>
+            <p>Presented for crossing 100,000 subscribers, this recognition reflects how the shelter's rescue stories and humanitarian work have reached a wider public audience.</p>
+          </div>
+        </article>
+
+        <article class="award-card award-card-landscape reveal-scroll">
+          <div class="award-media">
+            <img src="Edit/WhatsApp Image 2026-05-23 at 12.56.52 (1).png" alt="Rotary Club Jagadhri North certificate for donating kitchen sinks">
+          </div>
+          <div class="award-content">
+            <span class="award-year">2025</span>
+            <h2>Rotary Club Jagadhri North Support</h2>
+            <p>Acknowledgement for kitchen sinks donated for utensil washing, strengthening the shelter's daily meal service and hygiene systems.</p>
+          </div>
+        </article>
+
+        <article class="award-card award-card-landscape reveal-scroll">
+          <div class="award-media">
+            <img src="Edit/WhatsApp Image 2026-05-23 at 12.56.53.png" alt="Women's Day certificate of participation presented to Ni Aasre Da Aasra">
+          </div>
+          <div class="award-content">
+            <span class="award-year">2026</span>
+            <h2>Women's Day Participation Honour</h2>
+            <p>Presented during an International Women's Day gathering for continued commitment toward social awareness, women empowerment, and community upliftment.</p>
+          </div>
+        </article>
+
+        <article class="award-card award-card-portrait reveal-scroll">
+          <div class="award-media">
+            <img src="Edit/WhatsApp Image 2026-05-23 at 12.56.53 (1).png" alt="Spiritual Angel Award presented to Ni Aasre Da Aasra">
+          </div>
+          <div class="award-content">
+            <span class="award-year">Humanity</span>
+            <h2>Spiritual Angel Award</h2>
+            <p>Honoured by Social Service Wing RERF and Brahma Kumaris Barara for remarkable commitment to uplifting humanity and creating a lasting social impact.</p>
+          </div>
+        </article>
+
+        <article class="award-card award-card-portrait reveal-scroll">
+          <div class="award-media">
+            <img src="Edit/edited-photo (2).png" alt="Lions Club Ambala City Supreme award for service of humanity">
+          </div>
+          <div class="award-content">
+            <span class="award-year">Humanity</span>
+            <h2>Lions Club Service of Humanity</h2>
+            <p>Presented by Lions Club Ambala City Supreme in appreciation of Ni Aasre Da Aasra's service to vulnerable and abandoned people.</p>
+          </div>
+        </article>
+
+        <article class="award-card award-card-landscape reveal-scroll">
+          <div class="award-media">
+            <img src="Edit/edited-photo (3).png" alt="Rotary Yamunanagar Riviera certificate service above self">
+          </div>
+          <div class="award-content">
+            <span class="award-year">2023-24</span>
+            <h2>Rotary Service Above Self</h2>
+            <p>A certificate recognizing unwavering commitment and selfless acts of compassion that touch countless lives and bring hope to people in need.</p>
+          </div>
+        </article>
+
+        <article class="award-card award-card-landscape reveal-scroll">
+          <div class="award-media">
+            <img src="Edit/WhatsApp Image 2026-05-23 at 12.56.51.png" alt="Rotary Jagadhri North certificate service beyond oneself">
+          </div>
+          <div class="award-content">
+            <span class="award-year">2023-24</span>
+            <h2>Service Beyond Oneself</h2>
+            <p>Presented by Rotary Jagadhri North for compassionate commitment and selfless service toward those who need care and protection.</p>
+          </div>
+        </article>
+
+        <article class="award-card award-card-portrait reveal-scroll">
+          <div class="award-media">
+            <img src="Edit/edited-photo.png" alt="Vishwa Jagriti Mission Yamuna Nagar award presented to Ni Aasre Da Aasra">
+          </div>
+          <div class="award-content">
+            <span class="award-year">Human Services</span>
+            <h2>Vishwa Jagriti Mission Appreciation</h2>
+            <p>Presented by Vishwa Jagriti Mission Yamuna Nagar for dedicated human service and support to people living without family care.</p>
+          </div>
+        </article>
+
+        <article class="award-card award-card-portrait reveal-scroll">
+          <div class="award-media">
+            <img src="Edit/edited-photo (1).png" alt="Peer Buddhu Shah Ji Real Hero recognition plaque">
+          </div>
+          <div class="award-content">
+            <span class="award-year">Community Honour</span>
+            <h2>Peer Buddhu Shah Ji Real Hero Honour</h2>
+            <p>A community recognition celebrating courage, compassion, and values-led service inspired by the spirit of helping others.</p>
+          </div>
+        </article>
+
+        <article class="award-card award-card-portrait reveal-scroll">
+          <div class="award-media">
+            <img src="Edit/WhatsApp Image 2026-05-23 at 12.56.54.png" alt="Akal Sewa token of appreciation awarded to Ni Aasre Da Aasra Shelter Home">
+          </div>
+          <div class="award-content">
+            <span class="award-year">Appreciation</span>
+            <h2>Akal Sewa Token of Appreciation</h2>
+            <p>Awarded to Ni Aasre Da Aasra Shelter Home in appreciation of generous contribution and commitment toward society.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="awards-closing">
+      <div class="container awards-closing-panel reveal-scroll">
+        <i class="fa-solid fa-hands-holding-circle"></i>
+        <div>
+          <span class="eyebrow">Shared With Gratitude</span>
+          <h2>These honours belong to every donor, volunteer, rescuer, caregiver, and supporter.</h2>
+          <p>Recognition gives strength to continue the work: rescuing, sheltering, feeding, treating, and caring for people with dignity.</p>
+        </div>
+        <a class="btn primary" href="pages/donate.html">Support the Mission</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="container footer-layout">
+      <div>
+        <h2>Ni Aasre Da Aasra</h2>
+        <p>A humanitarian shelter home serving homeless, abandoned, destitute, mentally distressed, and physically ill people.</p>
+      </div>
+      <div>
+        <h3>Our Programs</h3>
+        <p><a href="pages/women-abuse.html">Women Safety</a><br><a href="pages/child-education.html">Child Education</a><br><a href="pages/elder-support.html">Elder Support</a><br><a href="pages/donate-meal.html">Meals of Hope</a></p>
+      </div>
+      <div>
+        <h3>Ways to Give</h3>
+        <p><a href="pages/donate.html">Donate</a><br><a href="pages/donate-monthly.html">Donate Monthly</a><br><a href="pages/campaign.html">Campaigns</a><br><a href="pages/volunteer.html">Volunteer / Work With Us</a></p>
+      </div>
+      <div>
+        <h3>Reach Us</h3>
+        <p>Village Magharpur, Post Office Mustafabad, District Yamuna Nagar, Haryana.</p>
+        <p><a href="tel:+919857366381">+91 9857366381</a><br><a href="tel:+917015501172">+91 7015501172</a><br><a href="mailto:niasredaasra@gmail.com">niasredaasra@gmail.com</a></p>
+        <div class="footer-social-links" aria-label="Social links">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>Copyright 2026, Ni Aasre Da Aasra. All rights reserved.</p>
+      <a href="index.html">Home</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.querySelector(".main-nav");
+    const navToggle = document.querySelector(".nav-toggle");
+
+    navToggle?.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("menu-open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    document.querySelectorAll(".nav-links a, .nav-donate").forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("menu-open");
+        navToggle?.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    const scrollRevealItems = document.querySelectorAll(".reveal-scroll");
+
+    const showScrollRevealItem = (item) => {
+      item.classList.add("is-visible");
+    };
+
+    if (scrollRevealItems.length) {
+      if ("IntersectionObserver" in window) {
+        const scrollRevealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            showScrollRevealItem(entry.target);
+            scrollRevealObserver.unobserve(entry.target);
+          });
+        }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
+
+        scrollRevealItems.forEach((item, index) => {
+          item.style.setProperty("--scroll-delay", `${Math.min(index % 3, 2) * 110}ms`);
+          scrollRevealObserver.observe(item);
+        });
+      } else {
+        scrollRevealItems.forEach(showScrollRevealItem);
+      }
+    }
+  </script>
+</body>
+</html>

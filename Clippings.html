@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Clippings | Ni Aasre Da Aasra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --orange: #e75b2c;
+      --gold: #f6a623;
+      --brown: #6f432f;
+      --ink: #1f2933;
+      --muted: #667085;
+      --paper: #fffaf4;
+      --white: #ffffff;
+      --line: #ead9cb;
+      --shadow: 0 18px 50px rgba(58, 31, 10, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "DM Sans", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(246, 166, 35, 0.14), transparent 34%),
+        linear-gradient(180deg, #fffaf4 0%, #ffffff 36%, #fff7ef 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1140px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: relative;
+      z-index: 30;
+      background: var(--white);
+      box-shadow: 0 1px 0 var(--line);
+    }
+
+    .main-nav {
+      height: 86px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--brown);
+      font-weight: 800;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--brown);
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-dropdown button:hover {
+      color: var(--orange);
+    }
+
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-dropdown button {
+      border: 0;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: transparent;
+      color: var(--brown);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 16px);
+      left: 0;
+      width: 250px;
+      max-height: 430px;
+      overflow: auto;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: 0.18s ease;
+      z-index: 20;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 6px;
+      color: var(--brown);
+    }
+
+    .nav-dropdown-menu a:hover {
+      background: #fff3e8;
+    }
+
+    .nav-donate,
+    .btn.primary {
+      background: linear-gradient(135deg, var(--orange), var(--gold));
+      color: var(--white);
+      box-shadow: 0 10px 24px rgba(231, 91, 44, 0.25);
+    }
+
+    .nav-donate {
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: box-shadow 0.28s ease, filter 0.28s ease, transform 0.28s ease;
+    }
+
+    .nav-donate:hover,
+    .nav-donate:focus-visible {
+      box-shadow: 0 16px 30px rgba(231, 91, 44, 0.34);
+      filter: saturate(1.08);
+      transform: translateY(-2px);
+    }
+
+    .nav-toggle {
+      display: none;
+      margin-left: auto;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--brown);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border: 0;
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .clippings-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 92px 0 76px;
+      background:
+        linear-gradient(135deg, rgba(43, 33, 28, 0.86), rgba(231, 91, 44, 0.78)),
+        url("assets/about-bg.jpg") center / cover;
+      color: var(--white);
+    }
+
+    .clippings-hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 96px;
+      background: linear-gradient(0deg, #fffaf4, rgba(255, 250, 244, 0));
+    }
+
+    .clippings-hero-layout {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .clippings-hero h1 {
+      max-width: 790px;
+      margin: 12px 0 18px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(44px, 6vw, 76px);
+      line-height: 0.98;
+    }
+
+    .clippings-hero p {
+      max-width: 720px;
+      color: #fff3e8;
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .clippings-hero .eyebrow {
+      color: #ffd39b;
+    }
+
+    .press-card {
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.14);
+      box-shadow: 0 24px 60px rgba(35, 20, 12, 0.28);
+      backdrop-filter: blur(12px);
+    }
+
+    .press-card i {
+      color: #ffd39b;
+      font-size: 42px;
+    }
+
+    .press-card strong {
+      display: block;
+      margin-top: 28px;
+      font-size: 74px;
+      line-height: 1;
+    }
+
+    .press-card span {
+      display: block;
+      margin-top: 12px;
+      color: #fff3e8;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .clippings-intro {
+      padding: 74px 0 28px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 0.86fr 1fr;
+      gap: 56px;
+      align-items: end;
+    }
+
+    .intro-grid h2,
+    .closing-panel h2 {
+      margin: 8px 0 0;
+      color: var(--brown);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(32px, 4vw, 50px);
+      line-height: 1.08;
+    }
+
+    .intro-grid p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 15;
+      padding: 16px 0;
+      background: rgba(255, 250, 244, 0.92);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(234, 217, 203, 0.7);
+      border-bottom: 1px solid rgba(234, 217, 203, 0.7);
+    }
+
+    .toolbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter-tabs button {
+      min-height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0 14px;
+      background: var(--white);
+      color: var(--brown);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .filter-tabs button:hover,
+    .filter-tabs button.is-active {
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--orange), var(--gold));
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    .clip-count {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .clippings-gallery {
+      padding: 36px 0 86px;
+    }
+
+    .clipping-grid {
+      column-count: 3;
+      column-gap: 26px;
+    }
+
+    .clip-card {
+      display: inline-block;
+      width: 100%;
+      margin: 0 0 26px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: 0 12px 30px rgba(58, 31, 10, 0.08);
+      cursor: zoom-in;
+      break-inside: avoid;
+      transition: border-color 0.28s ease, box-shadow 0.28s ease, transform 0.28s ease;
+    }
+
+    .clip-card:hover,
+    .clip-card:focus-visible {
+      border-color: rgba(231, 91, 44, 0.38);
+      box-shadow: 0 24px 54px rgba(111, 67, 47, 0.18);
+      transform: translateY(-7px);
+      outline: none;
+    }
+
+    .clip-image-wrap {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 220px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(255, 243, 232, 0.94), rgba(255, 255, 255, 0.76)),
+        radial-gradient(circle at center, rgba(246, 166, 35, 0.2), transparent 48%);
+    }
+
+    .clip-image-wrap::after {
+      content: "View clipping";
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(43, 33, 28, 0.82);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 800;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .clip-card:hover .clip-image-wrap::after,
+    .clip-card:focus-visible .clip-image-wrap::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .clip-card img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      transition: filter 0.3s ease, transform 0.34s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .clip-card:hover img,
+    .clip-card:focus-visible img {
+      filter: saturate(1.04) contrast(1.03);
+      transform: scale(1.025);
+    }
+
+    .clip-content {
+      padding: 18px;
+    }
+
+    .clip-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #fff3e8;
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .clip-content h3 {
+      margin: 12px 0 8px;
+      color: var(--brown);
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .clip-content p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .closing-section {
+      padding: 0 0 86px;
+    }
+
+    .closing-panel {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: center;
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff3e8;
+      box-shadow: 0 16px 44px rgba(58, 31, 10, 0.09);
+    }
+
+    .closing-panel > i {
+      width: 72px;
+      height: 72px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange), var(--gold));
+      color: var(--white);
+      font-size: 30px;
+    }
+
+    .closing-panel p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      place-items: center;
+      padding: 28px;
+      background: rgba(35, 20, 12, 0.84);
+    }
+
+    .lightbox.is-open {
+      display: grid;
+    }
+
+    .lightbox-panel {
+      position: relative;
+      width: min(1100px, 100%);
+      max-height: calc(100vh - 56px);
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
+      overflow: hidden;
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    .lightbox-media {
+      min-height: 0;
+      display: grid;
+      place-items: center;
+      overflow: auto;
+      background: #fffaf4;
+    }
+
+    .lightbox-media img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: calc(100vh - 190px);
+      object-fit: contain;
+    }
+
+    .lightbox-caption {
+      padding: 18px 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    .lightbox-caption h2 {
+      margin: 0 0 6px;
+      color: var(--brown);
+      font-size: 22px;
+    }
+
+    .lightbox-caption p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(43, 33, 28, 0.86);
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    .site-footer {
+      padding: 58px 0 24px;
+      background: #2b211c;
+      color: var(--white);
+    }
+
+    .footer-layout {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr 1fr 1.2fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .site-footer h2,
+    .site-footer h3 {
+      color: #ffd39b;
+      margin-top: 0;
+    }
+
+    .site-footer p {
+      color: #d9c8ba;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .site-footer a {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .footer-social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .footer-social-links a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffd39b;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .footer-social-links a:hover,
+    .footer-social-links a:focus-visible {
+      background: #ffd39b;
+      color: #2b211c;
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      margin-top: 36px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-bottom p {
+      margin: 0;
+    }
+
+    .reveal-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: var(--scroll-delay, 0ms);
+    }
+
+    .reveal-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 960px) {
+      .nav-toggle {
+        display: grid;
+        place-items: center;
+      }
+
+      .nav-links,
+      .nav-donate {
+        display: none;
+      }
+
+      .main-nav.menu-open .nav-links {
+        display: grid;
+        position: absolute;
+        top: 86px;
+        left: 16px;
+        right: 16px;
+        z-index: 5;
+        padding: 18px;
+        border-radius: 8px;
+        background: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .main-nav.menu-open .nav-dropdown-menu {
+        position: static;
+        width: 100%;
+        max-height: none;
+        margin-top: 10px;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+      }
+
+      .clippings-hero-layout,
+      .intro-grid,
+      .closing-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .clipping-grid {
+        column-count: 2;
+      }
+
+      .footer-layout {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .brand span {
+        max-width: 170px;
+      }
+
+      .clippings-hero {
+        padding: 72px 0 56px;
+      }
+
+      .clippings-hero h1 {
+        font-size: clamp(38px, 11vw, 56px);
+      }
+
+      .clippings-intro {
+        padding-top: 56px;
+      }
+
+      .toolbar-inner {
+        display: grid;
+        gap: 12px;
+      }
+
+      .clip-count {
+        white-space: normal;
+      }
+
+      .clipping-grid {
+        column-count: 1;
+      }
+
+      .closing-panel {
+        padding: 26px;
+      }
+
+      .closing-panel .btn {
+        width: 100%;
+      }
+
+      .footer-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 0;
+      }
+
+      .lightbox {
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="main-nav container" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Ni Aasre Da Aasra home">
+        <img src="assets/logo.png" alt="">
+        <span>Ni Aasre Da Aasra</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+          <button type="button">About <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="nav-dropdown-menu">
+            <a href="pages/about-us.html">About Us</a>
+            <a href="Awards.html">Awards</a>
+            <a href="Clippings.html">Media Clippings</a>
+            <a href="pages/about-us.html#vision">Vision & Mission</a>
+            <a href="pages/about-us.html#founders">Our Founders</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <button type="button">Our Programs <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="nav-dropdown-menu">
+            <a href="pages/women-abuse.html">Women Safety</a>
+            <a href="pages/child-education.html">Child Education</a>
+            <a href="pages/elder-support.html">Elder Support</a>
+            <a href="pages/differently-abled.html">Differently Abled</a>
+            <a href="pages/donate-meal.html">Meals of Hope</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <button type="button">Ways to Give <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="nav-dropdown-menu">
+            <a href="pages/donate.html">Donate</a>
+            <a href="pages/donate-monthly.html">Donate Monthly</a>
+            <a href="pages/donate-meal.html">Donate a Meal</a>
+            <a href="pages/csr-projects.html">CSR Projects</a>
+            <a href="pages/campaign.html">Campaign</a>
+            <a href="pages/volunteer.html">Volunteer / Work With Us</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <button type="button">Reach Us <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="nav-dropdown-menu">
+            <a href="pages/contact.html">Contact</a>
+            <a href="pages/privacy-policy.html">Privacy Policy</a>
+            <a href="pages/terms-of-use.html">Terms of Use</a>
+          </div>
+        </div>
+      </div>
+      <a class="nav-donate" href="pages/donate.html">Donate Now</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="clippings-hero">
+      <div class="container clippings-hero-layout">
+        <div class="reveal-scroll">
+          <span class="eyebrow">Media Clippings</span>
+          <h1>Stories of rescue, care, and community trust in the press.</h1>
+          <p>This archive brings together newspaper clippings and media coverage about Ni Aasre Da Aasra, documenting the shelter's work for homeless, abandoned, elderly, mentally distressed, and physically ill people.</p>
+        </div>
+        <div class="press-card reveal-scroll">
+          <i class="fa-solid fa-newspaper"></i>
+          <strong id="pressCount">40</strong>
+          <span>clippings and media moments preserved in this archive</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="clippings-intro">
+      <div class="container intro-grid">
+        <div class="reveal-scroll">
+          <span class="eyebrow">Press Archive</span>
+          <h2>Coverage that captures compassion becoming action.</h2>
+        </div>
+        <p class="reveal-scroll">Each clipping is a small public record of the NGO's service: rescues, resident care, public support, court and community visits, CSR initiatives, and the human stories that moved people to stand with the shelter.</p>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <div class="container toolbar-inner">
+        <div class="filter-tabs" aria-label="Clipping filters">
+          <button class="is-active" type="button" data-filter="all">All</button>
+          <button type="button" data-filter="press">Press</button>
+          <button type="button" data-filter="csr">CSR</button>
+          <button type="button" data-filter="community">Community</button>
+          <button type="button" data-filter="visits">Visits</button>
+        </div>
+        <span class="clip-count" id="visibleCount">Showing all clippings</span>
+      </div>
+    </div>
+
+    <section class="clippings-gallery" aria-label="Newspaper clippings gallery">
+      <div class="container">
+        <div class="clipping-grid" id="clippingGrid"></div>
+      </div>
+    </section>
+
+    <section class="closing-section">
+      <div class="container closing-panel reveal-scroll">
+        <i class="fa-solid fa-hands-holding-circle"></i>
+        <div>
+          <span class="eyebrow">A Living Record</span>
+          <h2>These clippings preserve the public journey of a shelter built through sewa.</h2>
+          <p>They remind every reader that care becomes stronger when communities notice, support, and participate.</p>
+        </div>
+        <a class="btn primary" href="pages/donate.html">Support the Mission</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Clipping preview">
+    <div class="lightbox-panel">
+      <button class="lightbox-close" type="button" aria-label="Close preview"><i class="fa-solid fa-xmark"></i></button>
+      <div class="lightbox-media">
+        <img id="lightboxImage" src="" alt="">
+      </div>
+      <div class="lightbox-caption">
+        <h2 id="lightboxTitle"></h2>
+        <p id="lightboxText"></p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer" id="contact">
+    <div class="container footer-layout">
+      <div>
+        <h2>Ni Aasre Da Aasra</h2>
+        <p>A humanitarian shelter home serving homeless, abandoned, destitute, mentally distressed, and physically ill people.</p>
+      </div>
+      <div>
+        <h3>Our Programs</h3>
+        <p><a href="pages/women-abuse.html">Women Safety</a><br><a href="pages/child-education.html">Child Education</a><br><a href="pages/elder-support.html">Elder Support</a><br><a href="pages/donate-meal.html">Meals of Hope</a></p>
+      </div>
+      <div>
+        <h3>Ways to Give</h3>
+        <p><a href="pages/donate.html">Donate</a><br><a href="pages/donate-monthly.html">Donate Monthly</a><br><a href="pages/campaign.html">Campaigns</a><br><a href="pages/volunteer.html">Volunteer / Work With Us</a></p>
+      </div>
+      <div>
+        <h3>Reach Us</h3>
+        <p>Village Magharpur, Post Office Mustafabad, District Yamuna Nagar, Haryana.</p>
+        <p><a href="tel:+919857366381">+91 9857366381</a><br><a href="tel:+917015501172">+91 7015501172</a><br><a href="mailto:niasredaasra@gmail.com">niasredaasra@gmail.com</a></p>
+        <div class="footer-social-links" aria-label="Social links">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>Copyright 2026, Ni Aasre Da Aasra. All rights reserved.</p>
+      <a href="index.html">Home</a>
+    </div>
+  </footer>
+
+  <script>
+    const clippings = [
+      { file: "aa.jpg", category: "press", title: "Newspaper Coverage", text: "A press clipping documenting the shelter's humanitarian work and public response." },
+      { file: "aaa.jpg", category: "press", title: "Press Recognition", text: "Media coverage highlighting Ni Aasre Da Aasra's care for people in need." },
+      { file: "aj.jpg", category: "press", title: "Local News Feature", text: "A local clipping about the NGO's continuing service and rescue work." },
+      { file: "Amar ujala 3rd Feb.jpg", category: "press", title: "Amar Ujala Coverage", text: "A newspaper story preserving a moment from the shelter's journey." },
+      { file: "bhaskar.jpg", category: "press", title: "Dainik Bhaskar Feature", text: "Coverage from the press about the impact and compassion of the NGO." },
+      { file: "csr.jpg", category: "csr", title: "CSR Support Coverage", text: "A clipping connected to institutional support and social responsibility initiatives." },
+      { file: "csr2.jpg", category: "csr", title: "CSR Initiative", text: "Media material documenting support extended through CSR and community participation." },
+      { file: "IMG-20220824-WA0005.jpg", category: "press", title: "Media Archive 2022", text: "A preserved article from the NGO's media archive." },
+      { file: "IMG-20220827-WA0034.jpg", category: "press", title: "Press Clipping", text: "A clipping showing how the shelter's work reached the public eye." },
+      { file: "IMG-20221203-WA0008.jpg", category: "press", title: "December Coverage", text: "A newspaper clipping from the archive of public coverage." },
+      { file: "Judge Photo from Ni Aasre Da Aasra.jpg", category: "visits", title: "Judicial Visit Coverage", text: "A media moment connected to official or community visits to the shelter." },
+      { file: "judge.jpg", category: "visits", title: "Visit Highlight", text: "Coverage connected to public officials and visitors engaging with the shelter's work." },
+      { file: "news.jpg", category: "press", title: "News Feature", text: "A news clipping about Ni Aasre Da Aasra and its ongoing humanitarian service." },
+      { file: "Photo from Ni Aasre Da Aasra (1).jpg", category: "community", title: "Community Moment", text: "A visual record from the NGO's public and community archive." },
+      { file: "Photo from Ni Aasre Da Aasra (10).jpg", category: "community", title: "Shelter Archive", text: "A media image preserving the public story of the shelter." },
+      { file: "Photo from Ni Aasre Da Aasra (11).jpg", category: "community", title: "Public Coverage", text: "A clipping or media photograph from the shelter's documentation." },
+      { file: "Photo from Ni Aasre Da Aasra (12).jpg", category: "press", title: "Newspaper Story", text: "Coverage about the NGO's work for vulnerable and abandoned people." },
+      { file: "Photo from Ni Aasre Da Aasra (13).jpg", category: "press", title: "Press Story", text: "A preserved newspaper clipping from the NGO's archive." },
+      { file: "Photo from Ni Aasre Da Aasra (14).jpg", category: "press", title: "Article Feature", text: "A news article documenting the shelter's public impact." },
+      { file: "Photo from Ni Aasre Da Aasra (15).jpg", category: "press", title: "Media Feature", text: "Press coverage reflecting the shelter's service and care." },
+      { file: "Photo from Ni Aasre Da Aasra (16).jpg", category: "press", title: "News Archive", text: "A clipping from the continuing record of Ni Aasre Da Aasra." },
+      { file: "Photo from Ni Aasre Da Aasra (17).jpg", category: "press", title: "Newspaper Archive", text: "A public record of the NGO's work and community recognition." },
+      { file: "Photo from Ni Aasre Da Aasra (2).jpg", category: "community", title: "Community Coverage", text: "A media moment connected to people supporting the shelter." },
+      { file: "Photo from Ni Aasre Da Aasra (3).jpg", category: "press", title: "Press Clipping", text: "A newspaper clipping about the shelter's humanitarian efforts." },
+      { file: "Photo from Ni Aasre Da Aasra (4).jpg", category: "press", title: "Article Archive", text: "A clipping preserved from the NGO's media history." },
+      { file: "Photo from Ni Aasre Da Aasra (5).jpg", category: "community", title: "Public Moment", text: "A visual media record from the shelter's public journey." },
+      { file: "Photo from Ni Aasre Da Aasra (6).jpg", category: "press", title: "Newspaper Clipping", text: "Coverage documenting service, rescue, and social commitment." },
+      { file: "Photo from Ni Aasre Da Aasra (7).jpg", category: "press", title: "Media Coverage", text: "A clipping showing the work of Ni Aasre Da Aasra in the public record." },
+      { file: "Photo from Ni Aasre Da Aasra (8).jpg", category: "press", title: "Press Archive", text: "A preserved article about the NGO's service to vulnerable people." },
+      { file: "Photo from Ni Aasre Da Aasra (9).jpg", category: "community", title: "Community Archive", text: "A clipping or photograph connected to community awareness." },
+      { file: "Photo from Ni Aasre Da Aasra.jpg", category: "press", title: "Media Story", text: "A press clipping from the shelter's journey of care." },
+      { file: "Photo from niasredaasra (1).jpg", category: "community", title: "Shelter Media Moment", text: "A public media image from Ni Aasre Da Aasra's archive." },
+      { file: "Photo from niasredaasra (2).jpg", category: "community", title: "Community Support", text: "A media record of people and organizations connecting with the shelter." },
+      { file: "Photo from niasredaasra (3).jpg", category: "press", title: "Press Feature", text: "A clipping documenting the NGO's ongoing work." },
+      { file: "Photo from niasredaasra (4).jpg", category: "community", title: "Archive Highlight", text: "A public image connected to the story of Ni Aasre Da Aasra." },
+      { file: "Photo from niasredaasra (5).jpg", category: "community", title: "Public Engagement", text: "A media moment showing public engagement with the shelter." },
+      { file: "Photo from niasredaasra.jpg", category: "community", title: "Media Archive", text: "A clipping or photo from the NGO's public archive." },
+      { file: "punjab kesri 5-12-22.jpg", category: "press", title: "Punjab Kesari Coverage", text: "A newspaper clipping dated 5 December 2022 from the media archive." },
+      { file: "Purnima-Assam.jpg", category: "press", title: "Purnima Assam Story", text: "A clipping connected to an individual story and the shelter's wider humanitarian reach." },
+      { file: "WhatsApp Image 2022-06-03 at 12.58.50.jpeg", category: "press", title: "June 2022 Coverage", text: "A clipping from June 2022 documenting the NGO's public presence." }
+    ];
+
+    const nav = document.querySelector(".main-nav");
+    const navToggle = document.querySelector(".nav-toggle");
+    const grid = document.querySelector("#clippingGrid");
+    const visibleCount = document.querySelector("#visibleCount");
+    const pressCount = document.querySelector("#pressCount");
+    const lightbox = document.querySelector("#lightbox");
+    const lightboxImage = document.querySelector("#lightboxImage");
+    const lightboxTitle = document.querySelector("#lightboxTitle");
+    const lightboxText = document.querySelector("#lightboxText");
+
+    pressCount.textContent = clippings.length;
+
+    navToggle?.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("menu-open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    document.querySelectorAll(".nav-links a, .nav-donate").forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("menu-open");
+        navToggle?.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    const createCard = (clip, index) => {
+      const card = document.createElement("article");
+      card.className = "clip-card reveal-scroll";
+      card.tabIndex = 0;
+      card.dataset.category = clip.category;
+      card.style.setProperty("--scroll-delay", `${Math.min(index % 3, 2) * 90}ms`);
+      card.innerHTML = `
+        <div class="clip-image-wrap">
+          <img src="Clippings/${clip.file}" alt="${clip.title}">
+        </div>
+        <div class="clip-content">
+          <span class="clip-tag">${clip.category}</span>
+          <h3>${clip.title}</h3>
+          <p>${clip.text}</p>
+        </div>
+      `;
+      card.addEventListener("click", () => openLightbox(clip));
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openLightbox(clip);
+        }
+      });
+      return card;
+    };
+
+    const renderCards = (filter = "all") => {
+      const filtered = filter === "all" ? clippings : clippings.filter((clip) => clip.category === filter);
+      grid.innerHTML = "";
+      filtered.forEach((clip, index) => grid.appendChild(createCard(clip, index)));
+      visibleCount.textContent = filter === "all"
+        ? `Showing all ${filtered.length} clippings`
+        : `Showing ${filtered.length} ${filter} clippings`;
+      setupScrollReveal();
+    };
+
+    const openLightbox = (clip) => {
+      lightboxImage.src = `Clippings/${clip.file}`;
+      lightboxImage.alt = clip.title;
+      lightboxTitle.textContent = clip.title;
+      lightboxText.textContent = clip.text;
+      lightbox.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove("is-open");
+      document.body.style.overflow = "";
+      lightboxImage.src = "";
+    };
+
+    document.querySelector(".lightbox-close").addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && lightbox.classList.contains("is-open")) closeLightbox();
+    });
+
+    document.querySelectorAll("[data-filter]").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("[data-filter]").forEach((item) => item.classList.remove("is-active"));
+        button.classList.add("is-active");
+        renderCards(button.dataset.filter);
+      });
+    });
+
+    const setupScrollReveal = () => {
+      const items = document.querySelectorAll(".reveal-scroll:not(.is-visible)");
+      if (!items.length) return;
+      if (!("IntersectionObserver" in window)) {
+        items.forEach((item) => item.classList.add("is-visible"));
+        return;
+      }
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.16, rootMargin: "0px 0px -8% 0px" });
+      items.forEach((item, index) => {
+        item.style.setProperty("--scroll-delay", item.style.getPropertyValue("--scroll-delay") || `${Math.min(index % 3, 2) * 100}ms`);
+        observer.observe(item);
+      });
+    };
+
+    renderCards();
+    setupScrollReveal();
+  </script>
+</body>
+</html>

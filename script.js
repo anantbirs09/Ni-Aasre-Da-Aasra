@@ -28,6 +28,32 @@ if (document.readyState === "loading") {
   revealOnLoad();
 }
 
+const scrollRevealItems = document.querySelectorAll(".reveal-scroll");
+
+const showScrollRevealItem = (item) => {
+  item.classList.add("is-visible");
+};
+
+if (scrollRevealItems.length) {
+  if ("IntersectionObserver" in window) {
+    const scrollRevealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        showScrollRevealItem(entry.target);
+        scrollRevealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
+
+    scrollRevealItems.forEach((item, index) => {
+      item.style.setProperty("--scroll-delay", `${Math.min(index % 3, 2) * 110}ms`);
+      scrollRevealObserver.observe(item);
+    });
+  } else {
+    scrollRevealItems.forEach(showScrollRevealItem);
+  }
+}
+
 const counters = document.querySelectorAll("[data-target]");
 const impactSection = document.querySelector("#impact");
 
